@@ -1,15 +1,9 @@
 let todayDate = moment().format('dddd, MMM Do YYYY');
 
-//Working on formatting date displayed to include hour in 24 hour format
-if (moment().hour() < 10) {
-    $("currentDay").html(todayDate + ", 0" + moment().format('hh') + "00");
-} else {
-    $("#currentDay").html(todayDate + ", " + moment().format('HH') + "00");
-}
+//Format date displayed to include hour (0000 to 2300)
+$("#currentDay").html(todayDate + ", " + moment().format('HH') + "00");
 
-// $("#currentDay").html(todayDate);
-
-//Initialize when document is loaded
+//Initialize when ready
 $(document).ready(function () {
         //Retrieve local storage data if present
         $("#0-hour .task").val(localStorage.getItem("0-hour"));
@@ -75,7 +69,7 @@ $(document).ready(function () {
                 $(this).addClass("future");
 
             }
-        })
+        });
     }
     //Initialize hourKeeper
     hourKeeper();
