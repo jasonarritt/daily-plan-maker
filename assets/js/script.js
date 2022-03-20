@@ -1,7 +1,8 @@
-let todayDate = moment().format('dddd, MMM Do YYYY');
+//Assign value of date
+let todayDate = moment().format('dddd, MMM Do YYYY, HH');
 
 //Format date displayed to include hour (0000 to 2300)
-$("#currentDay").html(todayDate + ", " + moment().format('HH') + "00");
+$("#currentDay").html(todayDate + "00");
 
 //Initialize when ready
 $(document).ready(function () {
@@ -37,11 +38,13 @@ $(document).ready(function () {
         let task = $(this).siblings(".task").val();
         let hour = $(this).parent().attr("id");
 
-        // Save task in local storage
+        // Save task to local storage
         localStorage.setItem(hour, task);
     })
    
+    //Begin hourKeeper function
     function hourKeeper() {
+
         //Get the current hour
         let currentHour = moment().hour();
 
